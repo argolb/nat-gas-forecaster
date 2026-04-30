@@ -225,7 +225,7 @@ The `features` stage creates the following features:
 
 ![Feature Correlation](notes/images/correlation_heatmap.png)
 
-The correlation heatmap shows strong positive autocorrelation with recent lags (especially `lag_1` and `lag_3`). Critically, `lag_12` and `lag_6` have **perfect 1.0 correlation** due to the limited 36-observation modeling sample after dropping 12 NA records. This multicollinearity creates feature redundancy, limiting the model's ability to distinguish independent seasonal effects and potentially destabilizing coefficient estimates.
+The correlation matrix reveals a strong seasonal component, with lag_12 showing the highest individual correlation to current Prices (0.90). There is also significant multicollinearity between lag_1 and the rolling_mean_3 (0.96), suggesting these features provide redundant information. Conversely, lag_6 and rolling_std_3 show negligible linear relationships with Price, indicating that mid-range lags and short-term volatility are poor predictors in this specific dataset.
 
 ---
 
