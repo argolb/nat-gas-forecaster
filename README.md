@@ -225,7 +225,7 @@ The `features` stage creates the following features:
 
 ![Feature Correlation](notes/images/correlation_heatmap.png)
 
-The correlation heatmap shows strong positive autocorrelation with recent lags (especially `lag_1` and `lag_3`), and a perfect correlation between `lag_12` and `lag_6` due to the limited sample size after dropna.
+The correlation heatmap shows strong positive autocorrelation with recent lags (especially `lag_1` and `lag_3`). Critically, `lag_12` and `lag_6` have **perfect 1.0 correlation** due to the limited 36-observation modeling sample after dropping 12 NA records. This multicollinearity creates feature redundancy, limiting the model's ability to distinguish independent seasonal effects and potentially destabilizing coefficient estimates.
 
 ---
 
@@ -237,7 +237,7 @@ The dataset contains 48 raw monthly observations (Oct 2020 – Sep 2024), but af
 
 ### 2. Multicollinearity (Redundancy)
 
-[Details in Commit 2]
+The 36-sample modeling dataset causes perfect 1.0 correlation between `lag_6` and `lag_12` features. With only 36 observations after dropping 12 NA records, the 12-month lag creates complete redundancy with the 6-month lag. This multicollinearity limits the model's ability to distinguish independent seasonal effects and may destabilize coefficient estimates.
 
 ### 3. Seasonality
 
