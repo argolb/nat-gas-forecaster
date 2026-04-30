@@ -204,7 +204,7 @@ The project uses a **SARIMA(1,1,1)(0,1,1,12)** model:
 
 ### Why SARIMA?
 
-- **Seasonality**: Natural gas prices exhibit 12-month seasonal cycles (winter demand spikes, summer storage builds)
+- **Seasonality**: Natural gas prices exhibit strong 12-month seasonal cycles (winter heating demand spikes, summer storage builds). The monthly price distribution plot confirms clear seasonal variation across calendar months. SARIMA captures this through seasonal differencing (D=1) and MA (Q=1) with S=12, though the 36-sample limit restricts long-term seasonal validation.
 - **Trend**: Differencing (`d=1`, `D=1`) handles non-stationary trends
 - **Autocorrelation**: AR and MA terms capture temporal dependencies
 
@@ -241,7 +241,7 @@ The 36-sample modeling dataset causes perfect 1.0 correlation between `lag_6` an
 
 ### 3. Seasonality
 
-[Details in Commit 3]
+Natural gas prices show strong 12-month seasonal cycles (winter heating demand spikes, summer storage builds). SARIMA's S=12 seasonal component captures this pattern, though the 36-sample limit restricts long-term seasonal validation. The monthly price distribution plot confirms clear seasonal variation across calendar months.
 
 ---
 
