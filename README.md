@@ -14,6 +14,7 @@ A complete time-series forecasting pipeline for predicting natural gas prices us
 - [Usage](#usage)
 - [Data](#data)
 - [Model Details](#model-details)
+- [Key Findings](#key-findings)
 - [Visualizations](#visualizations)
 - [Output](#output)
 - [Project Structure](#project-structure)
@@ -168,6 +169,7 @@ The project uses monthly natural gas price data from `notes/Nat_Gas.csv`:
 - **Start Date**: October 31, 2020
 - **End Date**: September 30, 2024
 - **Total Observations**: 48 months
+- **Modeling Sample**: 36 observations (12 NA records dropped during feature engineering)
 - **Frequency**: Monthly (month-end)
 
 ### Historical Price Visualization
@@ -224,6 +226,22 @@ The `features` stage creates the following features:
 ![Feature Correlation](notes/images/correlation_heatmap.png)
 
 The correlation heatmap shows strong positive autocorrelation with recent lags (especially `lag_1` and `lag_3`), and a perfect correlation between `lag_12` and `lag_6` due to the limited sample size after dropna.
+
+---
+
+## Key Findings
+
+### 1. Sample Size Limitation (Most Critical)
+
+The dataset contains 48 raw monthly observations (Oct 2020 – Sep 2024), but after generating lag features (max lag=12), **12 NA records are dropped**, leaving **36 samples for model training**. This small sample size is the primary constraint on model reliability and statistical significance.
+
+### 2. Multicollinearity (Redundancy)
+
+[Details in Commit 2]
+
+### 3. Seasonality
+
+[Details in Commit 3]
 
 ---
 
